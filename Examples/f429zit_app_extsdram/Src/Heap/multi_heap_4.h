@@ -27,7 +27,7 @@
  * - configTOTAL_HEAP_SIZE : internal sram region heap size (only not used the freertos)
  * - HEAP_REGIONS : memory address and size for regions
  *
- * This example contains 3 regions (stm32f407zet board for external 1MB sram chip with FSMC)
+ * This example contains 3 regions (stm32f407zet board, external 1MB sram on FSMC)
  * - 0: default memory region (internal sram) -> iramMalloc, iramFree, iramGetFreeHeapSize
  * - 1: ccm internal 64kB ram (0x10000000..0x1000FFFF) -> cramMalloc, cramFree, cramGetFreeHeapSize
  * - 2: external 1MB sram (0x68000000..0x680FFFFF) -> eramMalloc, eramFree, eramGetFreeHeapSize
@@ -35,7 +35,7 @@
                             { (uint8_t *) 0x10000000, 0x10000       },\
                             { (uint8_t *) 0x68000000, 0x100000      }};
  *
- * This example contains 3 regions (stm32f429zit discovery for external 8MB sdram chip with FSMC)
+ * This example contains 3 regions (stm32f429zit discovery, 8MB sdram on FSMC)
  * - 0: default memory region (internal sram) -> iramMalloc, iramFree, iramGetFreeHeapSize
  * - 1: ccm internal 64kB ram (0x10000000..0x1000FFFF) -> cramMalloc, cramFree, cramGetFreeHeapSize
  * - 2: external 8MB sdram (0xD0000000..0xD07FFFFF) -> eramMalloc, eramFree, eramGetFreeHeapSize
