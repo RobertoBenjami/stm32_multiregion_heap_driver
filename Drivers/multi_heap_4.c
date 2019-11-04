@@ -99,8 +99,9 @@ task.h is included from an application file. */
 #define portBYTE_ALIGNMENT_MASK (portBYTE_ALIGNMENT - 1)
 #define configASSERT( x ) if ((x) == 0) {for( ;; );}
 #define mtCOVERAGE_TEST_MARKER()
-#define traceFREE( pvAddress, uiSize )
-#define traceMALLOC( pvAddress, uiSize )
+#define traceMALLOC( pvAddress, uiSize ) //printf("malloc:0x%x, %d\r\n", pvAddress, uiSize)
+#define traceFREE( pvAddress, uiSize )   //printf("free:0x%x, %d\r\n", pvAddress, uiSize)
+
 #define vTaskSuspendAll()
 typedef struct HeapRegion
 {
@@ -118,9 +119,6 @@ typedef struct HeapRegion
 
 /* Assumes 8bit bytes! */
 #define heapBITS_PER_BYTE		( ( size_t ) 8 )
-
-// const uint8_t * ucHeap[HEAP_NUM] = {(uint8_t *)&ucHeap1, (uint8_t *)&ucHeap2, (uint8_t *)&ucHeap3};
-// const size_t    ucHeapSize [HEAP_NUM] = {sizeof(ucHeap1), sizeof(ucHeap2), sizeof(ucHeap3)};
 
 /* Define the linked list structure.  This is used to link free blocks in order
 of their memory address. */
