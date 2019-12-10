@@ -24,7 +24,7 @@
 /*
  * Please setting:
  * - HEAP_NUM : how many heap ram regions are
- * - configTOTAL_HEAP_SIZE : internal sram region heap size (only not used the freertos)
+ * - configTOTAL_HEAP_SIZE : internal sram region heap size (in the freertos is predefinied)
  * - HEAP_REGIONS : memory address and size for regions
  *
  * This example contains 3 regions (stm32f407zet board, external 1MB sram on FSMC)
