@@ -24,7 +24,7 @@
 /*
  * Please setting:
  * - HEAP_NUM : how many heap ram regions are
- * - configTOTAL_HEAP_SIZE : internal sram region heap size (only not used the freertos)
+ * - configTOTAL_HEAP_SIZE : internal sram region heap size (in the freertos is predefinied)
  * - HEAP_REGIONS : memory address and size for regions
  *
  * This example contains 3 regions (stm32f407zet board, external 1MB sram on FSMC)
@@ -54,7 +54,7 @@
 
 #define HEAP_0        ucHeap0[configTOTAL_HEAP_SIZE] // internal sram heap reservation if freertos used
 
-/* regions table: adress and size (internal sram region (0), ccmram region (1), external ram region (2) ) */
+/* regions table: address and size (internal sram region (0), ccmram region (1), external ram region (2) ) */
 #define HEAP_REGIONS  {{ (uint8_t *) &ucHeap0, sizeof(ucHeap0) },\
                        { (uint8_t *) 0x10000000, 0x10000       },\
                        { (uint8_t *) 0xD0000000, 0x800000      }};
