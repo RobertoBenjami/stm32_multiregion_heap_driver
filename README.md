@@ -11,5 +11,3 @@ The multi-region memory management features abilities:
 - you can set the order in which each region is occupied when reserving memory
 - region independent free function (finds in which region the memory to be released is located)
 - querying the total amount of free memory in several memory regions
-
-Memory regions examples and comment: https://github.com/RobertoBenjami/stm32_multiregion_heap_driver/blob/master/multiregion_heap_driver.pdf
