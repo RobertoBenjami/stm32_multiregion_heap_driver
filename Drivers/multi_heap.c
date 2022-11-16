@@ -705,7 +705,7 @@ void free(void *pv)
 }
 
 /*===========================================================*/
-/* Freertos memory region (RTOSREGION9 */
+/* Freertos memory region (RTOSREGION) */
 #ifdef RTOSREGION
 
 void *pvPortMalloc(size_t xWantedSize)
