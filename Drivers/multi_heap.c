@@ -710,27 +710,27 @@ void free(void *pv)
 
 void *pvPortMalloc(size_t xWantedSize)
 {
-  return malloc(xWantedSize);
+  return multiRegionMalloc(RTOSREGION, xWantedSize);
 }
 
 /*-----------------------------------------------------------*/
 void vPortFree(void *pv)
 {
 
-  free(pv);
+  multiRegionFree(RTOSREGION, pv);
 }
 
 /*-----------------------------------------------------------*/
 size_t xPortGetFreeHeapSize(void)
 {
-  return heapsize();
+  return multiRegionGetFreeHeapSize(RTOSREGION);
 }
 
 /*-----------------------------------------------------------*/
 
 size_t xPortGetMinimumEverFreeHeapSize(void)
 {
-  return xMinimumEverFreeBytesRemaining[0];
+  return multiRegionGetMinimumEverFreeHeapSize(RTOSREGION);
 }
 /*-----------------------------------------------------------*/
 
