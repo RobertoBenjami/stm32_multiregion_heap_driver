@@ -1,7 +1,7 @@
 /*
  * multi_heap.h (completion for heap_4.c / h)
  *
- *  Created on: Dec 14, 2020
+ *  Created on: Dec 16, 2023
  *      Author: Benjami
  */
 
@@ -173,6 +173,7 @@ static uint8_t HEAP_SHARED;
 static BlockLink_t xStart[HEAP_NUM], *pxEnd[HEAP_NUM] = {NULL};
 static size_t xFreeBytesRemaining[HEAP_NUM] = {0U};
 static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U};
+static size_t xBlockAllocatedBit[HEAP_NUM] = {0};
 #define DEFPARAM_0_(a)                   a
 #define DEFPARAM_1_(a)                   -1
 #define DEFPARAM_2_(a)                   -1
@@ -185,6 +186,7 @@ static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U};
 static BlockLink_t xStart[HEAP_NUM], *pxEnd[HEAP_NUM] = {NULL, NULL};
 static size_t xFreeBytesRemaining[HEAP_NUM] = {0U, 0U};
 static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U};
+static size_t xBlockAllocatedBit[HEAP_NUM] = {0, 0};
 #define DEFPARAM_0_(a, b)                a
 #define DEFPARAM_1_(a, b)                b
 #define DEFPARAM_2_(a, b)                -1
@@ -197,6 +199,7 @@ static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U};
 static BlockLink_t xStart[HEAP_NUM], *pxEnd[HEAP_NUM] = {NULL, NULL, NULL};
 static size_t xFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U};
 static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U};
+static size_t xBlockAllocatedBit[HEAP_NUM] = {0, 0, 0};
 #define DEFPARAM_0_(a, b, c)             a
 #define DEFPARAM_1_(a, b, c)             b
 #define DEFPARAM_2_(a, b, c)             c
@@ -209,6 +212,7 @@ static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U};
 static BlockLink_t xStart[HEAP_NUM], *pxEnd[HEAP_NUM] = {NULL, NULL, NULL, NULL};
 static size_t xFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U};
 static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U};
+static size_t xBlockAllocatedBit[HEAP_NUM] = {0, 0, 0, 0};
 #define DEFPARAM_0_(a, b, c, d)          a
 #define DEFPARAM_1_(a, b, c, d)          b
 #define DEFPARAM_2_(a, b, c, d)          c
@@ -221,6 +225,7 @@ static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U};
 static BlockLink_t xStart[HEAP_NUM], *pxEnd[HEAP_NUM] = {NULL, NULL, NULL, NULL, NULL};
 static size_t xFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U};
 static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U};
+static size_t xBlockAllocatedBit[HEAP_NUM] = {0, 0, 0, 0, 0};
 #define DEFPARAM_0_(a, b, c, d, e)       a
 #define DEFPARAM_1_(a, b, c, d, e)       b
 #define DEFPARAM_2_(a, b, c, d, e)       c
@@ -233,6 +238,7 @@ static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U};
 static BlockLink_t xStart[HEAP_NUM], *pxEnd[HEAP_NUM] = {NULL, NULL, NULL, NULL, NULL, NULL};
 static size_t xFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U};
 static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U};
+static size_t xBlockAllocatedBit[HEAP_NUM] = {0, 0, 0, 0, 0, 0};
 #define DEFPARAM_0_(a, b, c, d, e, f)    a
 #define DEFPARAM_1_(a, b, c, d, e, f)    b
 #define DEFPARAM_2_(a, b, c, d, e, f)    c
@@ -245,6 +251,7 @@ static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U
 static BlockLink_t xStart[HEAP_NUM], *pxEnd[HEAP_NUM] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL};
 static size_t xFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U, 0U};
 static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U, 0U};
+static size_t xBlockAllocatedBit[HEAP_NUM] = {0, 0, 0, 0, 0, 0, 0};
 #define DEFPARAM_0_(a, b, c, d, e, f, g)    a
 #define DEFPARAM_1_(a, b, c, d, e, f, g)    b
 #define DEFPARAM_2_(a, b, c, d, e, f, g)    c
@@ -257,6 +264,7 @@ static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U
 static BlockLink_t xStart[HEAP_NUM], *pxEnd[HEAP_NUM] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
 static size_t xFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U};
 static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U};
+static size_t xBlockAllocatedBit[HEAP_NUM] = {0, 0, 0, 0, 0, 0, 0, 0};
 #define DEFPARAM_0_(a, b, c, d, e, f, g, h) a
 #define DEFPARAM_1_(a, b, c, d, e, f, g, h) b
 #define DEFPARAM_2_(a, b, c, d, e, f, g, h) c
@@ -277,12 +285,6 @@ static size_t xMinimumEverFreeBytesRemaining[HEAP_NUM] = {0U, 0U, 0U, 0U, 0U, 0U
 #define DEFPARAM_7(a)    DEFPARAM_7_(a)
 
 const HeapRegion_t       ucHeap[] = HEAP_REGIONS;
-
-/* Gets set to the top bit of an size_t type.  When this bit in the xBlockSize
-member of an BlockLink_t structure is set then the block belongs to the
-application.  When the bit is free the block is still part of the free heap
-space. */
-static size_t xBlockAllocatedBit = 0;
 
 /*-----------------------------------------------------------*/
 
@@ -311,7 +313,7 @@ void *multiRegionMalloc(uint32_t i, size_t xWantedSize)
     set.  The top bit of the block size member of the BlockLink_t structure
     is used to determine who owns the block - the application or the
     kernel, so it must be free. */
-    if((xWantedSize & xBlockAllocatedBit) == 0)
+    if((xWantedSize & xBlockAllocatedBit[i]) == 0)
     {
       /* The wanted size is increased so it can contain a BlockLink_t
       structure in addition to the requested amount of bytes. */
@@ -394,7 +396,7 @@ void *multiRegionMalloc(uint32_t i, size_t xWantedSize)
 
           /* The block is being returned - it is allocated and owned
           by the application and has no "next" block. */
-          pxBlock->xBlockSize |= xBlockAllocatedBit;
+          pxBlock->xBlockSize |= xBlockAllocatedBit[i];
           pxBlock->pxNextFreeBlock = NULL;
         }
         else
@@ -467,7 +469,7 @@ void *multiRegionRealloc(uint32_t i, void *pv, size_t xWantedSize)
   pxLink = (void *)puc;
 
   /* Check the block is actually allocated. */
-  configASSERT((pxLink->xBlockSize & xBlockAllocatedBit) != 0);
+  configASSERT((pxLink->xBlockSize & xBlockAllocatedBit[i]) != 0);
   configASSERT(pxLink->pxNextFreeBlock == NULL);
 
   /* new block size == pre block size ? */
@@ -485,12 +487,12 @@ void *multiRegionRealloc(uint32_t i, void *pv, size_t xWantedSize)
   }
 
   /* Memory copy */
-  if((pxLink->xBlockSize & xBlockAllocatedBit) != 0)
+  if((pxLink->xBlockSize & xBlockAllocatedBit[i]) != 0)
   {
-    if(xWantedSize > pxLink->xBlockSize)
+    if((xWantedSize + xHeapStructSize) < (pxLink->xBlockSize & ~xBlockAllocatedBit[i]))
       copysize = xWantedSize;
     else
-      copysize = pxLink->xBlockSize;
+      copysize = (pxLink->xBlockSize & ~xBlockAllocatedBit[i]) - xHeapStructSize;
     memcpy(pvReturn, pv, copysize);
     multiRegionFree(i, pv);
   }
@@ -517,15 +519,15 @@ BlockLink_t *pxLink;
     pxLink = (void *)puc;
 
     /* Check the block is actually allocated. */
-    configASSERT((pxLink->xBlockSize & xBlockAllocatedBit) != 0);
+    configASSERT((pxLink->xBlockSize & xBlockAllocatedBit[i]) != 0);
     configASSERT(pxLink->pxNextFreeBlock == NULL);
 
-    if((pxLink->xBlockSize & xBlockAllocatedBit) != 0)
+    if((pxLink->xBlockSize & xBlockAllocatedBit[i]) != 0)
     {
       if(pxLink->pxNextFreeBlock == NULL)
       {
         /* The block is being returned to the heap - it is no longer allocated. */
-        pxLink->xBlockSize &= ~xBlockAllocatedBit;
+        pxLink->xBlockSize &= ~xBlockAllocatedBit[i];
 
         vTaskSuspendAll();
         {
@@ -596,7 +598,7 @@ static void prvHeapInit(uint32_t i)
   xFreeBytesRemaining[i] = pxFirstFreeBlock->xBlockSize;
 
   /* Work out the position of the top bit in a size_t variable. */
-  xBlockAllocatedBit = ((size_t) 1) << ((sizeof(size_t) * heapBITS_PER_BYTE) - 1);
+  xBlockAllocatedBit[i] = ((size_t) 1) << ((sizeof(size_t) * heapBITS_PER_BYTE) - 1);
 }
 
 /*-----------------------------------------------------------*/
